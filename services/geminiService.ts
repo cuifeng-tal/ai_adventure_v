@@ -3,6 +3,7 @@ import { GoogleGenAI, Type, Modality } from "@google/genai";
 import { Difficulty } from "../types";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+console.log("当前使用的 Gemini API_KEY:", process.env.API_KEY);
 
 // Helper to decode Base64
 export function decode(base64: string) {
