@@ -1,0 +1,7 @@
+{
+  "name": "Copy of 知识探险家：数学大冒险",
+  "description": "一个将枯燥数学题转化为沉浸式卡通冒险的AI互动游戏。通过Gemini API生成的精美插画、语音引导和智能难度系统，让学生在探索中掌握知识。",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
