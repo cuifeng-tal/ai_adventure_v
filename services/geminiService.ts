@@ -49,8 +49,8 @@ export const generateGameContent = async (prompt: string, schema: any) => {
 
 export const generateCartoonImage = async (prompt: string) => {
   const response = await ai.models.generateContent({
-    //model: 'gemini-2.5-flash-image',
-    model: 'gemini-3-pro-image',
+    model: 'gemini-2.5-flash-image',
+    //model: 'gemini-3-pro-image',
     contents: {
       parts: [{ text: `${prompt}. Cartoon style, bright colors, cute, Pixar-like, high saturation, simple lines, imaginative.` }],
     },
