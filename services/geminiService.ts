@@ -37,7 +37,8 @@ export async function decodeAudioData(
 
 export const generateGameContent = async (prompt: string, schema: any) => {
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    //model: "gemini-3-flash-preview",
+    model: "gemini-3-pro",
     contents: prompt,
     config: {
       responseMimeType: "application/json",
@@ -49,7 +50,8 @@ export const generateGameContent = async (prompt: string, schema: any) => {
 
 export const generateCartoonImage = async (prompt: string) => {
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash-image',
+    //model: 'gemini-2.5-flash-image',
+    model: 'gemini-3-pro-image',
     contents: {
       parts: [{ text: `${prompt}. Cartoon style, bright colors, cute, Pixar-like, high saturation, simple lines, imaginative.` }],
     },
@@ -72,7 +74,8 @@ export const generateCartoonImage = async (prompt: string) => {
 export const generateSpeech = async (text: string, retryCount = 0): Promise<string | undefined> => {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-preview-tts",
+      //model: "gemini-2.5-flash-preview-tts",
+      model: "gemini-2.5-pro-tts",
       contents: [{ parts: [{ text: `用亲切活泼的探险家语气朗读以下剧情：${text}` }] }],
       config: {
         responseModalities: [Modality.AUDIO],
