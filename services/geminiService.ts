@@ -74,7 +74,7 @@ export const generateSpeech = async (text: string, retryCount = 0): Promise<stri
   try {
     const response = await ai.models.generateContent({
       //model: "gemini-2.5-flash-preview-tts",
-      model: "gemini-2.5-pro-tts",
+      model: "gemini-2.5-pro-preview-tts",
       contents: [{ parts: [{ text: `用亲切活泼的探险家语气朗读以下剧情：${text}` }] }],
       config: {
         responseModalities: [Modality.AUDIO],
