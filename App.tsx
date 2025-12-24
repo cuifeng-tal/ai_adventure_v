@@ -92,7 +92,8 @@ const App: React.FC = () => {
     setErrorMsg('');
     try {
       const levelContent = await generateGameContent(
-        `将这个小学数学题融入一段充满想象力的卡通冒险故事的第一关中：${q}`,
+        `将这个小学数学题融入一段充满想象力的卡通冒险故事的第一关中：${q}。
+        请用 3-5 句简洁的中文叙述剧情，总字数控制在 80-120 字左右，适合幼儿阅读`,
         level1Schema
       );
       const img = await generateCartoonImage(levelContent.story);
@@ -131,7 +132,8 @@ const App: React.FC = () => {
       const level2Content = await generateGameContent(
         `在第一关剧情“${context.l1Story}”和知识点“${context.l1Question}”的基础上，
         根据选定的难度级别：${difficulty}，设计第二关。
-        故事要更紧张，数学题要从更深层面或新角度出发。`,
+        故事要更紧张，数学题要从更深层面或新角度出发。
+        请用 3-5 句简洁的中文叙述这一关的剧情，总字数控制在 80-120 字左右，适合幼儿阅读。`,
         level2Schema
       );
       const img = await generateCartoonImage(level2Content.story);
