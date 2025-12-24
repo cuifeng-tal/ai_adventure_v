@@ -49,8 +49,14 @@ const App: React.FC = () => {
   }, []);
 
   const playSpeech = async (text: string) => {
-    if (context.isAudioPlaying) stopAudio();
-    
+    // 如果当前语音正在播放中，则忽略本次点击，防止重复播放/叠加请求
+    if (context.isAudioPlaying) {
+      return;
+    }
+
+    // 标记为“语音占用中”，让按钮立刻不可点击
+    setContext(prev => ({ ...prev, isAudioPlaying: true }));
+
     const audioData = await generateSpeech(text);
     if (audioData) {
       try {
@@ -73,7 +79,6 @@ const App: React.FC = () => {
         source.connect(audioContextRef.current.destination);
         source.onended = () => setContext(prev => ({ ...prev, isAudioPlaying: false }));
         audioSourceRef.current = source;
-        setContext(prev => ({ ...prev, isAudioPlaying: true }));
         source.start();
       } catch (e) {
         console.error("Audio playback error:", e);
@@ -83,6 +88,7 @@ const App: React.FC = () => {
     } else {
       setToastMsg('语音服务暂时不可用');
       setTimeout(() => setToastMsg(''), 3000);
+      setContext(prev => ({ ...prev, isAudioPlaying: false }));
     }
   };
 
