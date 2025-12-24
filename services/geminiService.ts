@@ -37,8 +37,7 @@ export async function decodeAudioData(
 
 export const generateGameContent = async (prompt: string, schema: any) => {
   const response = await ai.models.generateContent({
-    //model: "gemini-3-flash-preview",
-    model: "gemini-3-pro",
+    model: "gemini-3-flash-preview",
     contents: prompt,
     config: {
       responseMimeType: "application/json",
